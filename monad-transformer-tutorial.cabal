@@ -1,0 +1,46 @@
+cabal-version:      3.0
+name:               mtt
+version:            0.1.0.0
+build-type:         Simple
+
+common warnings
+    ghc-options: -Wall
+    default-language: Haskell2010
+
+library
+    import:           warnings
+    exposed-modules:
+        Eval
+        Eval0
+        Eval1
+        Eval2
+        Eval3
+        Eval4
+        Eval5
+        Eval6
+    build-depends:    base ^>=4.16.4.0
+        , mtl
+        , containers
+    hs-source-dirs:   src
+
+executable exe
+    import:           warnings
+    main-is:          Main.hs
+    build-depends:
+        base ^>=4.16.4.0,
+        mtt
+    hs-source-dirs:   app
+
+test-suite tests
+    import:           warnings
+    type:             exitcode-stdio-1.0
+    hs-source-dirs:   test
+    main-is:          Main.hs
+    other-modules:
+        EvalTest
+    build-depends:
+        base ^>=4.16.4.0
+        , containers
+        , mtt
+        , tasty
+        , tasty-hunit
